@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://d3jwk04rumlos"]
+
+[ext_resource type="Texture2D" uid="uid://c536644o7iksr" path="res://src/assets/assets_personajes/assets_dragoncito/spr_enemy_reg_hurt_strip4.png" id="1_10wns"]
+[ext_resource type="Script" uid="uid://dfny12wnhwgxf" path="res://src/scripts/dragoncito.gd" id="1_h40vi"]
+[ext_resource type="Texture2D" uid="uid://cdueoyydhma8n" path="res://src/assets/assets_personajes/assets_dragoncito/spr_monster_reg_strip4.png" id="2_h40vi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uubok"]
+atlas = ExtResource("1_10wns")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnuox"]
+atlas = ExtResource("1_10wns")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4llme"]
+atlas = ExtResource("1_10wns")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awo4p"]
+atlas = ExtResource("1_10wns")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8u0h"]
+atlas = ExtResource("2_h40vi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qldl4"]
+atlas = ExtResource("2_h40vi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3o6f"]
+atlas = ExtResource("2_h40vi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqjby"]
+atlas = ExtResource("2_h40vi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhjhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uubok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnuox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4llme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awo4p")
+}],
+"loop": true,
+"name": &"golpeado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8u0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qldl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3o6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqjby")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdsxs"]
+radius = 23.0
+
+[node name="Dragoncito" type="CharacterBody2D"]
+script = ExtResource("1_h40vi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_qhjhh")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.08337585
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("CircleShape2D_fdsxs")
+debug_color = Color(0.9320097, 2.560556e-05, 0.6524999, 0.41960785)
