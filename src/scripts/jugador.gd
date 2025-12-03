@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var lanzador: Marker2D = $lanzador
 
 @export var SPEED : int = 15002
 @export var JUMP_VELOCITY : int = -400
@@ -10,6 +11,11 @@ enum State {idle, correr, salto, disparo}
 
 var current_state : State
 
+var lanza = preload("res://src/escenas/Personajes/lanza.tscn")
+
+var lanzador_posicion
+var direction := 0
+
 func _ready() -> void:
 	current_state = State.idle
 	animated_sprite_2d.animation_finished.connect(_on_animation_finished)
@@ -17,7 +23,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# --- PRIMERO: manejar entradas (disparo, salto, movimiento) ---
+	lanzador_posicion = lanzador.position
+	
+	
 	jugador_disparo()  # revisar disparo antes que la gravedad
+	
 	# Salto (solo si no estamos en disparo)
 	if current_state != State.disparo:
 		if Input.is_action_just_pressed("saltar") and is_on_floor():
@@ -25,7 +35,8 @@ func _physics_process(delta: float) -> void:
 			current_state = State.salto
 
 	# Movimiento horizontal (solo si no estamos en disparo)
-	var direction := Input.get_axis("mover_izq", "mover_der")
+	direction = Input.get_axis("mover_izq", "mover_der")
+
 	if current_state != State.disparo:
 		if direction != 0:
 			velocity.x = direction * SPEED * delta
@@ -66,7 +77,11 @@ func jugador_idle():
 
 func jugador_disparo():
 	# Si se presiona disparo y no estamos ya disparando
-	if Input.is_action_just_pressed("diparo") and current_state != State.disparo:
+	if Input.is_action_just_pressed("disparo") and current_state != State.disparo:
+		var lanza_instance = lanza.instantiate() as Node2D
+		lanza_instance.direction = (-1) if animated_sprite_2d.flip_h else 1
+		lanza_instance.global_position = lanzador.global_position
+		get_parent().add_child(lanza_instance)
 		# congelar movimiento horizontal y vertical
 		velocity.x = 0
 		velocity.y = 0            # <- importantísimo: corta la subida
@@ -95,3 +110,4 @@ func _on_animation_finished():
 	if current_state == State.disparo:
 		# Al terminar, permitimos que la gravedad y el movimiento vuelvan a aplicarse
 		current_state = State.idle
+		

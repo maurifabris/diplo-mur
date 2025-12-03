@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://btnn1k1aorvih"]
+[gd_scene load_steps=5 format=3 uid="uid://btnn1k1aorvih"]
 
 [ext_resource type="Texture2D" uid="uid://3ilm8vopmoxk" path="res://src/assets/assets_personajes/assets_jugador/armas_jugador.png" id="1_7t40q"]
+[ext_resource type="Script" uid="uid://cmqboyvg5ecgj" path="res://src/scripts/lanza.gd" id="2_ubj0c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubj0c"]
 atlas = ExtResource("1_7t40q")
@@ -19,3 +20,11 @@ animations = [{
 
 [node name="lanza" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ddpro")
+script = ExtResource("2_ubj0c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
