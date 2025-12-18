@@ -1,25 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://btnn1k1aorvih"]
+[gd_scene load_steps=6 format=3 uid="uid://btnn1k1aorvih"]
 
-[ext_resource type="Texture2D" uid="uid://3ilm8vopmoxk" path="res://src/assets/assets_personajes/assets_jugador/armas_jugador.png" id="1_7t40q"]
+[ext_resource type="Texture2D" uid="uid://c4bm6dftgt7jb" path="res://src/assets/assets_personajes/assets_jugador/spear.png" id="1_ubj0c"]
 [ext_resource type="Script" uid="uid://cmqboyvg5ecgj" path="res://src/scripts/lanza.gd" id="2_ubj0c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ubj0c"]
-atlas = ExtResource("1_7t40q")
-region = Rect2(0, 0, 19, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddpro"]
+atlas = ExtResource("1_ubj0c")
+region = Rect2(0, 0, 26, 26)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ddpro"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ubj0c")
+"texture": SubResource("AtlasTexture_ddpro")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ubj0c"]
+radius = 3.5762467
+height = 33.858448
+
 [node name="lanza" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ddpro")
+animation = &"new_animation"
 script = ExtResource("2_ubj0c")
 
 [node name="Timer" type="Timer" parent="."]
@@ -27,4 +32,14 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+rotation = 0.8552113
+shape = SubResource("CapsuleShape2D_ubj0c")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

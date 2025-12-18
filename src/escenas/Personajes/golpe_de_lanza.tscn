@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://brhqgswombc1y"]
+
+[ext_resource type="Texture2D" uid="uid://5n32cw8atyaa" path="res://src/assets/assets_personajes/assets_jugador/20251210_2355_Lanza en Píxeles_remix_01kc5n9qa8eg1v228ca886f2tp.png" id="1_3kvb6"]
+[ext_resource type="Script" uid="uid://bk0dfyyveh36j" path="res://src/scripts/golpe_de_lanza.gd" id="2_h3vpb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oagmv"]
+atlas = ExtResource("1_3kvb6")
+region = Rect2(0, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv45m"]
+atlas = ExtResource("1_3kvb6")
+region = Rect2(256, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18dn1"]
+atlas = ExtResource("1_3kvb6")
+region = Rect2(512, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ydnn"]
+atlas = ExtResource("1_3kvb6")
+region = Rect2(768, 512, 256, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tdur1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oagmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv45m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18dn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ydnn")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="golpe_de_lanza" type="AnimatedSprite2D"]
+rotation = 0.73129296
+scale = Vector2(0.087890625, 0.07470703)
+sprite_frames = SubResource("SpriteFrames_tdur1")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 1
+frame_progress = 0.5136018
+script = ExtResource("2_h3vpb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

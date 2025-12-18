@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3jwk04rumlos"]
+[gd_scene load_steps=15 format=3 uid="uid://d3jwk04rumlos"]
 
 [ext_resource type="Texture2D" uid="uid://c536644o7iksr" path="res://src/assets/assets_personajes/assets_dragoncito/spr_enemy_reg_hurt_strip4.png" id="1_10wns"]
 [ext_resource type="Script" uid="uid://dfny12wnhwgxf" path="res://src/scripts/dragoncito.gd" id="1_h40vi"]
@@ -76,6 +76,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdsxs"]
 radius = 23.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h40vi"]
+radius = 27.018513
+
 [node name="Dragoncito" type="CharacterBody2D"]
 script = ExtResource("1_h40vi")
 
@@ -89,4 +92,14 @@ frame_progress = 0.08337585
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)
 shape = SubResource("CircleShape2D_fdsxs")
-debug_color = Color(0.9320097, 2.560556e-05, 0.6524999, 0.41960785)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -23)
+shape = SubResource("CircleShape2D_h40vi")
+debug_color = Color(0.9488072, 2.9841065e-06, 0.57890385, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

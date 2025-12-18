@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dglwi2d64iwk6"]
+[gd_scene load_steps=7 format=3 uid="uid://dglwi2d64iwk6"]
 
 [ext_resource type="Texture2D" uid="uid://5u0u5toejgdk" path="res://src/assets/tile_sets/Dungeon Tile Set.png" id="1_wrbek"]
 [ext_resource type="PackedScene" uid="uid://dys7nm1yhv3gb" path="res://src/escenas/Personajes/jugador.tscn" id="2_7bdu6"]
 [ext_resource type="PackedScene" uid="uid://d3jwk04rumlos" path="res://src/escenas/Personajes/dragoncito.tscn" id="3_ejrl4"]
+[ext_resource type="PackedScene" uid="uid://qouqe4xbhrtt" path="res://src/escenas/niveles/Partes de nivel/plataforma_spowneables.tscn" id="6_ssmj5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h06de"]
 texture = ExtResource("1_wrbek")
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0 = 0
 6:1/0 = 0
 8:1/0 = 0
@@ -152,33 +155,38 @@ position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_7gdj4")
 format = 2
 layer_0/name = "piso"
-layer_0/tile_data = PackedInt32Array(2555904, 131072, 1, 2555905, 131072, 1, 2555906, 131072, 1, 2555907, 131072, 1, 2555908, 131072, 1, 2555909, 131072, 1, 2555910, 131072, 1, 2555911, 131072, 1, 2555912, 131072, 1, 2555913, 131072, 1, 2555914, 131072, 1, 2555915, 131072, 1, 2555916, 131072, 1, 2555917, 131072, 1, 2555918, 131072, 1, 2555919, 131072, 1, 2555920, 131072, 1, 2555921, 131072, 1, 2555922, 131072, 1, 2555923, 131072, 1, 2555924, 131072, 1, 2555925, 131072, 1, 2555926, 131072, 1, 2555927, 131072, 1, 2555928, 131072, 1, 2555929, 131072, 1, 2555930, 131072, 1, 2555931, 131072, 1, 2555932, 131072, 1, 2555933, 131072, 1, 2555934, 131072, 1, 2555935, 131072, 1, 2555936, 131072, 1, 2555937, 131072, 1, 2555938, 131072, 1, 2555939, 131072, 1, 2555940, 131072, 1, 2555941, 131072, 1, 2555942, 131072, 1, 2555943, 131072, 1, 2555944, 131072, 1, 2555945, 131072, 1, 2555946, 131072, 1, 2555947, 131072, 1, 2555948, 131072, 1, 2555949, 131072, 1, 2555950, 131072, 1, 2490415, 131072, 1, 2490416, 131072, 1, 2490417, 131072, 1, 2490418, 131072, 1, 2490419, 131072, 1, 2490420, 131072, 1, 2490421, 131072, 1, 2490422, 131072, 1, 2490423, 131072, 1, 2490424, 131072, 1, 2490425, 131072, 1, 2490426, 131072, 1, 2490427, 131072, 1, 2490428, 131072, 1, 2490429, 131072, 1, 2490430, 131072, 1, 2490431, 131072, 1, 2490432, 131072, 1, 2490433, 131072, 1, 2490434, 131072, 1, 2490435, 131072, 1, 2490436, 131072, 1, 2490437, 131072, 1, 2490438, 131072, 1, 2490439, 131072, 1, 2490440, 131072, 1, 2490441, 131072, 1, 2490442, 131072, 1, 2555951, 131072, 1, 2555952, 131072, 1, 2555953, 131072, 1, 2555954, 131072, 1, 2555955, 131072, 1, 2555956, 131072, 1, 2555957, 131072, 1, 2555958, 131072, 1, 2555959, 131072, 1, 2555960, 131072, 1, 2555961, 131072, 1, 2555962, 131072, 1, 2555963, 131072, 1, 2555964, 131072, 1, 2555965, 131072, 1, 2555966, 131072, 1, 2555967, 131072, 1, 2555968, 131072, 1, 2555969, 131072, 1, 2555970, 131072, 1, 2555971, 131072, 1, 2555972, 131072, 1, 2555973, 131072, 1, 2555974, 131072, 1, 2555975, 131072, 1, 2555976, 131072, 1)
+layer_0/tile_data = PackedInt32Array(2555904, 131072, 1, 2555905, 131072, 1, 2555906, 131072, 1, 2555907, 131072, 1, 2555908, 131072, 1, 2555909, 131072, 1, 2555910, 131072, 1, 2555911, 131072, 1, 2555912, 131072, 1, 2555913, 131072, 1, 2555914, 131072, 1, 2555915, 131072, 1, 2555916, 131072, 1, 2555917, 131072, 1, 2555918, 131072, 1, 2555919, 131072, 1, 2555920, 131072, 1, 2555921, 131072, 1, 2555922, 131072, 1, 2555923, 131072, 1, 2555924, 131072, 1, 2555925, 131072, 1, 2555926, 131072, 1, 2555927, 131072, 1, 2555928, 131072, 1, 2555929, 131072, 1, 2555930, 131072, 1, 2555931, 131072, 1, 2555932, 131072, 1, 2555933, 131072, 1, 2555934, 131072, 1, 2555935, 131072, 1, 2555936, 131072, 1, 2555937, 131072, 1, 2555938, 131072, 1, 2555939, 131072, 1, 2555940, 131072, 1, 2555941, 131072, 1, 2555942, 131072, 1, 2555943, 131072, 1, 2555944, 131072, 1, 2555945, 131072, 1, 2555946, 131072, 1, 2555947, 131072, 1, 2555948, 131072, 1, 2555949, 131072, 1, 2555950, 131072, 1, 2490415, 131072, 1, 2490416, 131072, 1, 2490417, 131072, 1, 2490418, 131072, 1, 2490419, 131072, 1, 2490420, 131072, 1, 2490421, 131072, 1, 2490422, 131072, 1, 2490423, 131072, 1, 2490424, 131072, 1, 2490425, 131072, 1, 2490426, 131072, 1, 2490427, 131072, 1, 2490428, 131072, 1, 2490429, 131072, 1, 2490430, 131072, 1, 2490431, 131072, 1, 2490432, 131072, 1, 2490433, 131072, 1, 2490434, 131072, 1, 2490435, 131072, 1, 2490436, 131072, 1, 2490437, 131072, 1, 2490438, 131072, 1, 2490439, 131072, 1, 2490440, 131072, 1, 2490441, 131072, 1, 2490442, 131072, 1, 2555951, 131072, 1, 2555952, 131072, 1, 2555953, 131072, 1, 2555954, 131072, 1, 2555955, 131072, 1, 2555956, 131072, 1, 2555957, 131072, 1, 2555958, 131072, 1, 2555959, 131072, 1, 2555960, 131072, 1, 2555961, 131072, 1, 2555962, 131072, 1, 2555963, 131072, 1, 2555964, 131072, 1, 2555965, 131072, 1, 2555966, 131072, 1, 2555967, 131072, 1, 2555968, 131072, 1, 2555969, 131072, 1, 2555970, 131072, 1, 2555971, 131072, 1, 2555972, 131072, 1, 2555973, 131072, 1, 2555974, 131072, 1, 2555975, 131072, 1, 2555976, 131072, 1, 2490368, 131072, 1, 2424832, 131072, 1, 2359296, 131072, 1, 2490369, 131072, 1, 2490370, 131072, 1, 2490371, 131072, 1)
 
 [node name="Jugador" parent="." instance=ExtResource("2_7bdu6")]
-position = Vector2(42, 601)
+position = Vector2(112, 545)
 
 [node name="Camera2D" type="Camera2D" parent="Jugador"]
 
-[node name="Dragoncito" parent="." node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
-position = Vector2(482, 621)
+[node name="Enemigos" type="Node" parent="."]
+
+[node name="Dragoncito" parent="Enemigos" node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
+position = Vector2(381, 622)
 puntos_de_patron = NodePath("PatrolPoints")
 
-[node name="PatrolPoints" type="Node2D" parent="Dragoncito"]
+[node name="PatrolPoints" type="Node2D" parent="Enemigos/Dragoncito"]
 
-[node name="Punto1" type="Marker2D" parent="Dragoncito/PatrolPoints"]
+[node name="Punto1" type="Marker2D" parent="Enemigos/Dragoncito/PatrolPoints"]
 position = Vector2(-100, -6)
 
-[node name="Punto2" type="Marker2D" parent="Dragoncito/PatrolPoints"]
+[node name="Punto2" type="Marker2D" parent="Enemigos/Dragoncito/PatrolPoints"]
 position = Vector2(170, -8)
 
-[node name="Dragoncito2" parent="." node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
+[node name="Dragoncito2" parent="Enemigos" node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
 position = Vector2(873, 607)
 puntos_de_patron = NodePath("PatrolPoints")
 
-[node name="PatrolPoints" type="Node2D" parent="Dragoncito2"]
+[node name="PatrolPoints" type="Node2D" parent="Enemigos/Dragoncito2"]
 
-[node name="Punto1" type="Marker2D" parent="Dragoncito2/PatrolPoints"]
+[node name="Punto1" type="Marker2D" parent="Enemigos/Dragoncito2/PatrolPoints"]
 position = Vector2(-100, -6)
 
-[node name="Punto2" type="Marker2D" parent="Dragoncito2/PatrolPoints"]
+[node name="Punto2" type="Marker2D" parent="Enemigos/Dragoncito2/PatrolPoints"]
 position = Vector2(170, -8)
+
+[node name="PlataformaMovil" parent="." instance=ExtResource("6_ssmj5")]
+position = Vector2(110, 565)
