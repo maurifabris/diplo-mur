@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dglwi2d64iwk6"]
+[gd_scene load_steps=8 format=3 uid="uid://dglwi2d64iwk6"]
 
 [ext_resource type="Texture2D" uid="uid://5u0u5toejgdk" path="res://src/assets/tile_sets/Dungeon Tile Set.png" id="1_wrbek"]
 [ext_resource type="PackedScene" uid="uid://dys7nm1yhv3gb" path="res://src/escenas/Personajes/jugador.tscn" id="2_7bdu6"]
 [ext_resource type="PackedScene" uid="uid://d3jwk04rumlos" path="res://src/escenas/Personajes/dragoncito.tscn" id="3_ejrl4"]
+[ext_resource type="PackedScene" uid="uid://dpv8thtnvgfxj" path="res://src/escenas/niveles/Partes de nivel/plataforma_movil.tscn" id="5_g01kv"]
 [ext_resource type="PackedScene" uid="uid://qouqe4xbhrtt" path="res://src/escenas/niveles/Partes de nivel/plataforma_spowneables.tscn" id="6_ssmj5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h06de"]
@@ -165,13 +166,13 @@ position = Vector2(123, 547)
 [node name="Enemigos" type="Node" parent="."]
 
 [node name="Dragoncito" parent="Enemigos" node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
-position = Vector2(381, 622)
+position = Vector2(559, 616)
 puntos_de_patron = NodePath("PatrolPoints")
 
 [node name="PatrolPoints" type="Node2D" parent="Enemigos/Dragoncito"]
 
 [node name="Punto1" type="Marker2D" parent="Enemigos/Dragoncito/PatrolPoints"]
-position = Vector2(-90, -13)
+position = Vector2(-468, -16)
 
 [node name="Punto2" type="Marker2D" parent="Enemigos/Dragoncito/PatrolPoints"]
 position = Vector2(170, -8)
@@ -194,3 +195,18 @@ position = Vector2(170, -8)
 position = Vector2(127, 551)
 distancia_pixeles = 100.0
 tiempo_inactivo = 0.0
+
+[node name="PlataformaSpowneable2" parent="." instance=ExtResource("5_g01kv")]
+position = Vector2(234, 497)
+
+[node name="Dragoncito2" parent="." node_paths=PackedStringArray("puntos_de_patron") instance=ExtResource("3_ejrl4")]
+position = Vector2(873, 607)
+puntos_de_patron = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node2D" parent="Dragoncito2"]
+
+[node name="Punto1" type="Marker2D" parent="Dragoncito2/PatrolPoints"]
+position = Vector2(-100, -6)
+
+[node name="Punto2" type="Marker2D" parent="Dragoncito2/PatrolPoints"]
+position = Vector2(170, -8)
