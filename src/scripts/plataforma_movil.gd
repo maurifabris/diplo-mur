@@ -1,10 +1,11 @@
 extends Node2D
 
-@export var dur_inact: float = 1.2
+@export var dur_inact: float = 0.5
 @export var mover_a: Vector2
 @export var velocidad: float = 100.0
 
 @onready var character_body_2d: CharacterBody2D = $CharacterBody2D
+
 
 var origen: Vector2
 var destino: Vector2

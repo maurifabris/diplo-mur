@@ -1,5 +1,4 @@
 extends CharacterBody2D
-class_name PlataformaSpawneable
 
 @export var direccion: Vector2 = Vector2.RIGHT
 @export var distancia_pixeles: float = 128.0
